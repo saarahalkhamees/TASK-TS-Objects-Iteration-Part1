@@ -1,57 +1,30 @@
 const {
-  createPerson,
-  addEmailToPerson,
   hasKey,
   printMovieTitles,
-  countMoviesByYear1994,
   updateMovieGenre,
+  countMoviesByYear,
 } = require("./objectIteration");
 
-describe("Person Object Manipulations", () => {
-  let person;
+describe("hasKey", () => {
+  const sampleObject = {
+    name: "John",
+    age: 25,
+    city: "New York",
+  };
 
-  beforeEach(() => {
-    person = createPerson();
+  it("should return true if the key exists in the object", () => {
+    expect(hasKey(sampleObject, "name")).toBe(true);
+    expect(hasKey(sampleObject, "age")).toBe(true);
+    expect(hasKey(sampleObject, "city")).toBe(true);
   });
 
-  describe("Create Person", () => {
-    it("should create a person object with specified properties", () => {
-      expect(person).toEqual({
-        name: "Alice",
-        age: 30,
-        city: "New York",
-      });
-    });
-  });
-
-  describe("Add Email to Person", () => {
-    it("should add an email to the person object", () => {
-      const updatedPerson = addEmailToPerson(person, "alice@example.com");
-      expect(updatedPerson.email).toBe("alice@example.com");
-    });
-  });
-
-  describe("Object Key Presence Function", () => {
-    const sampleObject = {
-      name: "John",
-      age: 25,
-      city: "New York",
-    };
-
-    it("should return true if the key exists in the object", () => {
-      expect(hasKey(sampleObject, "name")).toBe(true);
-      expect(hasKey(sampleObject, "age")).toBe(true);
-      expect(hasKey(sampleObject, "city")).toBe(true);
-    });
-
-    it("should return false if the key does not exist in the object", () => {
-      expect(hasKey(sampleObject, "height")).toBe(false);
-      expect(hasKey(sampleObject, "weight")).toBe(false);
-    });
+  it("should return false if the key does not exist in the object", () => {
+    expect(hasKey(sampleObject, "height")).toBe(false);
+    expect(hasKey(sampleObject, "weight")).toBe(false);
   });
 });
 
-describe("Movie Array Manipulations", () => {
+describe("Movie Array Manipulation", () => {
   const originalMovies = [
     {
       title: "The Shawshank Redemption",
@@ -85,31 +58,71 @@ describe("Movie Array Manipulations", () => {
     },
   ];
 
-  it("should print the titles of all movies", () => {
-    const consoleSpy = jest.spyOn(console, "log");
-    printMovieTitles(originalMovies);
-    expect(consoleSpy).toHaveBeenCalledTimes(originalMovies.length);
-    consoleSpy.mockRestore();
+  describe("printMovieTitles", () => {
+    it("should print the titles of all movies", () => {
+      const consoleSpy = jest.spyOn(console, "log");
+      printMovieTitles(originalMovies);
+      expect(consoleSpy).toHaveBeenCalledTimes(originalMovies.length);
+      originalMovies.forEach(({ title }, i) =>
+        expect(consoleSpy).toHaveBeenNthCalledWith(i + 1, title)
+      );
+      consoleSpy.mockRestore();
+    });
   });
 
-  it("should count how many movies were released in 1994", () => {
-    expect(countMoviesByYear1994(originalMovies)).toBe(3);
+  describe("countMoviesByYear", () => {
+    it("should count how many movies were released in a year", () => {
+      expect(countMoviesByYear(originalMovies, 1994)).toBe(3);
+    });
   });
 
-  it('should update the genre of "The Dark Knight" to "Action/Drama" and ensure no other movies are modified', () => {
-    const updatedMovies = updateMovieGenre([...originalMovies]);
-    const darkKnight = updatedMovies.find(
-      (movie) => movie.title === "The Dark Knight"
-    );
-    expect(darkKnight.genre).toBe("Action/Drama");
+  describe("updateMovieGenre", () => {
+    it("should update the genre of the movie with the given title", () => {
+      const copy = [...originalMovies];
+      const title = "The Dark Knight";
+      const newGenre = "Romantic Comedy";
+      const updatedMovies = updateMovieGenre(copy, title, newGenre);
+      const darkKnight = copy[3];
+      expect(darkKnight.genre).toBe(newGenre);
 
-    updatedMovies.forEach((movie) => {
-      if (movie.title !== "The Dark Knight") {
-        const originalMovie = originalMovies.find(
-          (original) => original.title === movie.title
-        );
-        expect(movie.genre).toBe(originalMovie.genre);
-      }
+      updatedMovies.forEach((movie) => {
+        if (movie.title !== "The Dark Knight") {
+          const originalMovie = originalMovies.find(
+            (original) => original.title === movie.title
+          );
+          expect(movie.genre).toBe(originalMovie.genre);
+        }
+      });
+    });
+
+    it("should return the modified array", () => {
+      const copy = [...originalMovies];
+      const title = "The Dark Knight";
+      const newGenre = "Romantic Comedy";
+      expect(updateMovieGenre(copy, title, newGenre).length).toBe(copy.length);
+    });
+
+    it("should return the unmodified array if the movie is not found", () => {
+      const copy = [...originalMovies];
+      const title = "Bananas in Pyjamas";
+      const newGenre = "Horror";
+      expect(updateMovieGenre(copy, title, newGenre)).toEqual(copy);
+    });
+
+    it("should not modify any other movies", () => {
+      const copy = [...originalMovies];
+      const title = "The Dark Knight";
+      const newGenre = "Romantic Comedy";
+      const updatedMovies = updateMovieGenre(copy, title, newGenre);
+
+      updatedMovies.forEach((movie) => {
+        if (movie.title !== title) {
+          const originalMovie = originalMovies.find(
+            (original) => original.title === movie.title
+          );
+          expect(movie.genre).toBe(originalMovie.genre);
+        }
+      });
     });
   });
 });
