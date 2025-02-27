@@ -20,6 +20,15 @@
       ]
     ]
   },
+  "jest-junit": {
+    "outputDirectory": "reports",
+    "outputName": "jest-junit.xml",
+    "ancestorSeparator": " › ",
+    "uniqueOutputName": "false",
+    "suiteNameTemplate": "{ancestorTitles[0]}",
+    "classNameTemplate": "{ancestorTitles.join(' › ')}",
+    "titleTemplate": "{title}"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
