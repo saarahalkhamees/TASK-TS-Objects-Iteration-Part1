@@ -25,8 +25,8 @@
     "outputName": "junit.xml",
     "ancestorSeparator": " › ",
     "uniqueOutputName": "false",
-    "suiteNameTemplate": "{ancestorTitles[0]}",
-    "classNameTemplate": "{ancestorTitles.join(' › ')}",
+    "suiteNameTemplate": "{ancestorTitles.0}",
+    "classNameTemplate": "{ancestorTitles}",
     "titleTemplate": "{title}"
   },
   "keywords": [],
