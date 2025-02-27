@@ -22,8 +22,8 @@
   },
   "keywords": [],
   "jest-junit": {
-    "outputDirectory": "reports",
-    "outputName": "jest-junit.xml",
+    "outputDirectory": "reports/junit",
+    "outputName": "junit.xml",
     "ancestorSeparator": " › ",
     "uniqueOutputName": "false",
     "suiteNameTemplate": "{filepath}",
