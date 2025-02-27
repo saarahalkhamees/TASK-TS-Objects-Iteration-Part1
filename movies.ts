@@ -1,5 +1,15 @@
-// DO NOT MODIFY OR DELETE `movies`
-const movies = [
+interface Movie {
+  title: string;
+  director: string;
+  year: number;
+  genre: string;
+}
+
+/**
+ * You can use movies to
+ * manually test your code
+ */
+const movies: Movie[] = [
   {
     title: "The Shawshank Redemption",
     director: "Frank Darabont",
@@ -32,36 +42,38 @@ const movies = [
   },
 ];
 
-// Q1: Write a `hasKey` function that takes two arguments, an object and a key.
+// Write a `hasKey` function that takes two arguments, an object and a key.
 // The function should return true if the object contains  the specified key, and false otherwise.
-function hasKey(obj, key) {
+function hasKey(obj: object, key: string): boolean {
   // write your code here...
+  return true;
 }
 
-// Q2: Write a `printMovieTitles` function that accepts an array of objects called 'movies'
+// Write a `printMovieTitles` function that accepts an array of objects called 'movies'
 // and iterates through it to print the titles of all the movies.
-function printMovieTitles(movies) {
+function printMovieTitles(movies: Movie[]): void {
   // write your code here...
 }
 
-// Q3: Write a `countMoviesByYear` function that accepts an array of objects called 'movies'
+// Write a `countMoviesByYear` function that accepts an array of objects called 'movies'
 // and a year
 // and returns the number of movies that were released in that year.
-function countMoviesByYear(movies, year) {
+function countMoviesByYear(movies: Movie[], year: number): number {
   // write your code here...
+  return -1;
 }
 
-// Q4: Write a `updateMovieGenre` function that accepts a title and a new genre
+// Write a `updateMovieGenre` function that accepts a title and a new genre
 // and updates the genre of the given movie, if it exists,
 // then returns the modified array of movies.
 // Hint: use array iterator .find
-function updateMovieGenre(movies, title, newGenre) {
+function updateMovieGenre(
+  movies: Movie[],
+  title: string,
+  newGenre: string
+): Movie[] {
   // write your code here...
+  return [];
 }
 
-module.exports = {
-  hasKey,
-  printMovieTitles,
-  countMoviesByYear,
-  updateMovieGenre,
-};
+export { Movie, hasKey, printMovieTitles, countMoviesByYear, updateMovieGenre };

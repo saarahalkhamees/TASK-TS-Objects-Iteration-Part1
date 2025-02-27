@@ -1,9 +1,10 @@
-const {
+import {
+  Movie,
+  countMoviesByYear,
   hasKey,
   printMovieTitles,
   updateMovieGenre,
-  countMoviesByYear,
-} = require("./objectIteration");
+} from "./movies";
 
 describe("hasKey", () => {
   const sampleObject = {
@@ -25,7 +26,7 @@ describe("hasKey", () => {
 });
 
 describe("Movie Array Manipulation", () => {
-  const originalMovies = [
+  const originalMovies: Movie[] = [
     {
       title: "The Shawshank Redemption",
       director: "Frank Darabont",
@@ -90,7 +91,8 @@ describe("Movie Array Manipulation", () => {
           const originalMovie = originalMovies.find(
             (original) => original.title === movie.title
           );
-          expect(movie.genre).toBe(originalMovie.genre);
+          expect(originalMovie).toBeTruthy();
+          expect(movie.genre).toBe(originalMovie!.genre);
         }
       });
     });
@@ -120,7 +122,8 @@ describe("Movie Array Manipulation", () => {
           const originalMovie = originalMovies.find(
             (original) => original.title === movie.title
           );
-          expect(movie.genre).toBe(originalMovie.genre);
+          expect(originalMovie).toBeTruthy();
+          expect(movie.genre).toBe(originalMovie!.genre);
         }
       });
     });
