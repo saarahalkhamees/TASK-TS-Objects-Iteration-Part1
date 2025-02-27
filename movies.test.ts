@@ -26,7 +26,7 @@ describe("Movies", () => {
     });
   });
 
-  describe("Movie Array Manipulation", () => {
+  describe("Movies Array Manipulation", () => {
     const originalMovies: Movie[] = [
       {
         title: "The Shawshank Redemption",

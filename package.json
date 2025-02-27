@@ -20,16 +20,17 @@
       ]
     ]
   },
+  "keywords": [],
   "jest-junit": {
-    "outputDirectory": "reports/junit",
-    "outputName": "junit.xml",
+    "outputDirectory": "reports",
+    "outputName": "jest-junit.xml",
     "ancestorSeparator": " › ",
     "uniqueOutputName": "false",
-    "suiteNameTemplate": "{ancestorTitles.0}",
-    "classNameTemplate": "{ancestorTitles}",
-    "titleTemplate": "{title}"
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}",
+    "addFileAttribute": "true"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
