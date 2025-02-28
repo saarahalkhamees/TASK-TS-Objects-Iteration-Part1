@@ -94,11 +94,11 @@ function countMoviesByYear(movies: Movie[], year: number): number {
  * then returns the modified array of movies.
  * Hint: use array iterator .find
  * example:
- *  updateMovieGenre(movies, "Pulp Fiction", "Thriller") =>
+ *  updateMovieGenre(movies, "Pulp Fiction", "Romantic Comedy") =>
  *  [
  *    { title: "The Shawshank Redemption", genre: "Drama", ... },
  *    { title: "The Godfather", genre: "Crime", ... },
- *    { title: "Pulp Fiction", genre: "Thriller", ... },  // ✅ Updated genre
+ *    { title: "Pulp Fiction", genre: "Romantic Comedy", ... },  // ✅ Updated genre
  *    { title: "The Dark Knight", genre: "Action", ... },
  *    { title: "Forrest Gump", genre: "Drama", ... }
  *  ]
