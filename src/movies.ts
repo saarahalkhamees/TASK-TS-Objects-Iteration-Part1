@@ -67,16 +67,17 @@ function printMovieTitles(movies: Movie[]): void {
   // write your code here...
 }
 
-// `countMoviesByYear` function that:
-// - Accepts two parameters:
-// - a "movies" array of type "Movie[]"
-// - a "year" of type "number"
-// - Returns the number of movies that were released in that year.
-// example:
-//  countMoviesByYear(movies, 1994); // => 3
-//  countMoviesByYear(movies, 2008); // => 1
-//  countMoviesByYear(movies, 2025); // => 0
-
+/**
+ * `countMoviesByYear` function that:
+ * - Accepts two parameters:
+ *  - a "movies" array of type "Movie[]"
+ *  - a "year" of type "number"
+ * - Returns the number of movies that were released in that year.
+ * example:
+ *   countMoviesByYear(movies, 1994); // => 3
+ *   countMoviesByYear(movies, 2008); // => 1
+ *   countMoviesByYear(movies, 2025); // => 0
+ */
 function countMoviesByYear(movies: Movie[], year: number): number {
   // write your code here...
 
