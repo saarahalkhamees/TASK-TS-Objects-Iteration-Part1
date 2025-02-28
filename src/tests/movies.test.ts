@@ -4,7 +4,7 @@ import {
   hasKey,
   printMovieTitles,
   updateMovieGenre,
-} from "./movies";
+} from "../movies";
 
 describe("Movies", () => {
   describe("hasKey", () => {
